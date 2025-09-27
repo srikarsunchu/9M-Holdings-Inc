@@ -24,7 +24,7 @@ export default async function handler(req, res) {
 
     // Send email using Resend
     const { data, error } = await resend.emails.send({
-      from: 'Contact Form <noreply@9m.site>',
+      from: 'Contact Form <onboarding@resend.dev>',
       to: ['ops@9m.site'],
       subject: 'New Contact Form Submission',
       html: `
