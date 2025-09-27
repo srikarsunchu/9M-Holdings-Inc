@@ -1,0 +1,583 @@
+@import url("https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&display=swap");
+
+:root {
+  --light: #d7dbd2;
+  --dark: #0f0f0f;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Instrument Serif", sans-serif;
+}
+
+img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+h1 {
+  font-size: 5rem;
+  font-weight: 500;
+  letter-spacing: -0.1rem;
+  line-height: 0.9;
+}
+
+section {
+  position: relative;
+  width: 100vw;
+  height: 100svh;
+  padding: 2rem;
+  overflow: hidden;
+}
+
+.intro,
+.outro {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--light);
+  color: var(--dark);
+  position: relative;
+}
+
+.intro h1,
+.outro h1 {
+  width: 50%;
+  text-align: center;
+  position: relative;
+  z-index: 10;
+}
+
+/* Swiss Grid Background */
+.swiss-grid-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  background-image: 
+    radial-gradient(circle at center, var(--dark) 1px, transparent 1px);
+  background-size: 40px 40px;
+  background-position: 20px 20px;
+  transition: opacity 1s ease;
+  z-index: 1;
+}
+
+/* Corner Registration Marks */
+.reg-mark {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  opacity: 0;
+  transition: opacity 0.8s ease;
+  z-index: 2;
+}
+
+.reg-mark::before,
+.reg-mark::after {
+  content: '';
+  position: absolute;
+  background-color: var(--dark);
+}
+
+.reg-mark::before {
+  width: 12px;
+  height: 1px;
+}
+
+.reg-mark::after {
+  width: 1px;
+  height: 12px;
+}
+
+.reg-mark-tl {
+  top: 2rem;
+  left: 2rem;
+}
+
+.reg-mark-tl::before {
+  top: 0;
+  left: 0;
+}
+
+.reg-mark-tl::after {
+  top: 0;
+  left: 0;
+}
+
+.reg-mark-tr {
+  top: 2rem;
+  right: 2rem;
+}
+
+.reg-mark-tr::before {
+  top: 0;
+  right: 0;
+}
+
+.reg-mark-tr::after {
+  top: 0;
+  right: 0;
+}
+
+.reg-mark-bl {
+  bottom: 2rem;
+  left: 2rem;
+}
+
+.reg-mark-bl::before {
+  bottom: 0;
+  left: 0;
+}
+
+.reg-mark-bl::after {
+  bottom: 0;
+  left: 0;
+}
+
+.reg-mark-br {
+  bottom: 2rem;
+  right: 2rem;
+}
+
+.reg-mark-br::before {
+  bottom: 0;
+  right: 0;
+}
+
+.reg-mark-br::after {
+  bottom: 0;
+  right: 0;
+}
+
+/* Edge Markers */
+.edge-marker {
+  position: absolute;
+  background-color: var(--dark);
+  opacity: 0;
+  transition: opacity 0.8s ease;
+  z-index: 2;
+}
+
+.edge-top,
+.edge-bottom {
+  width: 30px;
+  height: 1px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.edge-left,
+.edge-right {
+  width: 1px;
+  height: 30px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.edge-top {
+  top: 1rem;
+}
+
+.edge-bottom {
+  bottom: 1rem;
+}
+
+.edge-left {
+  left: 1rem;
+}
+
+.edge-right {
+  right: 1rem;
+}
+
+/* Metadata Elements */
+.metadata {
+  position: absolute;
+  font-size: 0.75rem;
+  font-weight: 400;
+  letter-spacing: 0.05em;
+  opacity: 0;
+  transform: translateY(10px);
+  transition: all 0.8s ease;
+  z-index: 3;
+}
+
+.metadata-tl {
+  top: 4rem;
+  left: 2rem;
+}
+
+.metadata-tr {
+  top: 4rem;
+  right: 2rem;
+}
+
+.metadata-bl {
+  bottom: 4rem;
+  left: 2rem;
+}
+
+.metadata-br {
+  bottom: 4rem;
+  right: 2rem;
+}
+
+/* Animation States */
+.intro.phase-2 .swiss-grid-bg,
+.intro.phase-2 .reg-mark {
+  opacity: 0.15;
+}
+
+.intro.phase-3 .edge-marker {
+  opacity: 0.3;
+}
+
+.intro.phase-4 .metadata {
+  opacity: 0.6;
+  transform: translateY(0);
+}
+
+.intro.phase-4 .swiss-grid-bg {
+  opacity: 0.08;
+}
+
+.spotlight {
+  background-color: var(--dark);
+  color: var(--light);
+}
+
+.spotlight-images,
+.spotlight-cover-img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d;
+  perspective: 2000px;
+}
+
+.img {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate3d(-50%, -50%, -1000px);
+  width: 500px;
+  height: 350px;
+  will-change: transform;
+}
+
+.spotlight-cover-img {
+  will-change: transform;
+  background-color: var(--dark);
+}
+
+.swiss-cross-container {
+  position: absolute;
+  width: 60vw;
+  height: 60vh;
+  left: 61.8%;
+  top: 38.2%;
+  transform: translate(-50%, -50%);
+}
+
+.swiss-cross-horizontal,
+.swiss-cross-vertical {
+  position: absolute;
+  background-color: var(--light);
+  transform-origin: center;
+}
+
+.swiss-cross-horizontal {
+  width: 0%;
+  height: 3px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.swiss-cross-vertical {
+  width: 3px;
+  height: 0%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.corner-dot {
+  position: absolute;
+  width: 5px;
+  height: 5px;
+  background-color: var(--light);
+  border-radius: 50%;
+  opacity: 0;
+  transform: scale(0);
+}
+
+.corner-dot-tl {
+  top: 0;
+  left: 0;
+}
+
+.corner-dot-tr {
+  top: 0;
+  right: 0;
+}
+
+.corner-dot-br {
+  bottom: 0;
+  right: 0;
+}
+
+.corner-dot-bl {
+  bottom: 0;
+  left: 0;
+}
+
+.spotlight-intro-header,
+.spotlight-outro-header {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  width: 50%;
+}
+
+.spotlight-intro-header {
+  z-index: 1;
+}
+
+.spotlight-outro-header {
+  z-index: 2;
+}
+
+/* Swiss Grid System - 12x8 Layout */
+.swiss-grid-container {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  grid-template-rows: repeat(8, 1fr);
+  width: 100%;
+  height: 100%;
+  gap: 2rem;
+  position: relative;
+}
+
+/* Progressive Reveal Text Area (Cols 1-7, Rows 1-4) */
+.grid-text-area {
+  grid-column: 1 / 8;
+  grid-row: 1 / 5;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  position: relative;
+}
+
+.outro-main-text {
+  opacity: 1;
+}
+
+/* Contact Form (Cols 8-12, Rows 2-6) */
+.grid-contact-form {
+  grid-column: 8 / 13;
+  grid-row: 2 / 7;
+  opacity: 0;
+  transform: translateX(2rem);
+  transition: all 0.8s ease;
+}
+
+.swiss-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  height: 100%;
+}
+
+.form-field {
+  background: transparent;
+  border: none;
+  border-bottom: 2px solid var(--dark);
+  padding: 1rem 0;
+  font-family: "Instrument Serif", sans-serif;
+  font-size: 1.2rem;
+  color: var(--dark);
+  outline: none;
+  transition: border-color 0.3s ease;
+}
+
+.form-field:focus {
+  border-bottom-color: var(--dark);
+}
+
+.form-field::placeholder {
+  color: rgba(15, 15, 15, 0.5);
+}
+
+.form-textarea {
+  resize: none;
+  min-height: 4rem;
+  border-bottom: 2px solid var(--dark);
+}
+
+.form-submit {
+  background: var(--dark);
+  color: var(--light);
+  border: none;
+  padding: 1rem 2rem;
+  font-family: "Instrument Serif", sans-serif;
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  align-self: flex-start;
+}
+
+.form-submit:hover {
+  background: rgba(15, 15, 15, 0.8);
+  transform: translateY(-2px);
+}
+
+/* Contact Options Grid (Cols 1-6, Rows 5-8) */
+.grid-contact-options {
+  grid-column: 1 / 7;
+  grid-row: 5 / 9;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  gap: 1.5rem;
+  opacity: 0;
+  transform: translateY(2rem);
+  transition: all 0.8s ease;
+}
+
+.contact-option {
+  display: flex;
+  flex-direction: column;
+  text-decoration: none;
+  color: var(--dark);
+  padding: 1.5rem;
+  border: 1px solid rgba(15, 15, 15, 0.2);
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.contact-option:hover {
+  border-color: var(--dark);
+  transform: translateY(-3px);
+}
+
+.contact-option:hover::before {
+  transform: translateX(0);
+}
+
+.contact-option::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: var(--dark);
+  transform: translateX(-100%);
+  transition: transform 0.3s ease;
+  z-index: -1;
+}
+
+.contact-option:hover .option-label,
+.contact-option:hover .option-value {
+  color: var(--light);
+}
+
+.option-label {
+  font-size: 0.9rem;
+  opacity: 0.7;
+  margin-bottom: 0.5rem;
+  transition: color 0.3s ease;
+}
+
+.option-value {
+  font-size: 1.1rem;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+/* Grid Reference Dots */
+.grid-dot {
+  position: absolute;
+  width: 4px;
+  height: 4px;
+  background-color: var(--dark);
+  border-radius: 50%;
+  opacity: 0.3;
+}
+
+.grid-dot-1 {
+  grid-column: 5;
+  grid-row: 3;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.grid-dot-2 {
+  grid-column: 8;
+  grid-row: 2;
+  top: 0;
+  left: 0;
+}
+
+.grid-dot-3 {
+  grid-column: 6;
+  grid-row: 8;
+  bottom: 0;
+  right: 0;
+}
+
+/* Animation States */
+.outro.revealed .grid-contact-form {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.outro.revealed .grid-contact-options {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (max-width: 1000px) {
+  .intro h1,
+  .spotlight-intro-header,
+  .spotlight-outro-header {
+    width: 100%;
+  }
+
+  .spotlight-intro-header,
+  .spotlight-outro-header {
+    padding: 2rem;
+  }
+
+  .swiss-grid-container {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto auto;
+    gap: 3rem;
+  }
+
+  .grid-text-area,
+  .grid-contact-form,
+  .grid-contact-options {
+    grid-column: 1;
+    grid-row: auto;
+  }
+
+  .grid-contact-options {
+    grid-template-columns: 1fr;
+  }
+}
