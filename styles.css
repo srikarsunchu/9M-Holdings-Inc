@@ -444,6 +444,50 @@ section {
   transform: translateY(-2px);
 }
 
+.form-submit:disabled {
+  background: rgba(15, 15, 15, 0.5);
+  cursor: not-allowed;
+  transform: none;
+}
+
+.form-submit:disabled:hover {
+  background: rgba(15, 15, 15, 0.5);
+  transform: none;
+}
+
+/* Form Validation States */
+.field-error-state {
+  border-bottom-color: #e74c3c !important;
+}
+
+.field-error {
+  color: #e74c3c;
+  font-size: 0.875rem;
+  margin-top: 0.5rem;
+  font-style: italic;
+}
+
+/* Form Feedback */
+.form-feedback {
+  padding: 1rem;
+  border-radius: 4px;
+  font-size: 0.9rem;
+  margin-top: 1rem;
+  text-align: center;
+}
+
+.form-feedback-success {
+  background-color: rgba(46, 204, 113, 0.1);
+  color: #27ae60;
+  border: 1px solid rgba(46, 204, 113, 0.3);
+}
+
+.form-feedback-error {
+  background-color: rgba(231, 76, 60, 0.1);
+  color: #e74c3c;
+  border: 1px solid rgba(231, 76, 60, 0.3);
+}
+
 /* Contact Options Grid (Cols 1-6, Rows 5-8) */
 .grid-contact-options {
   grid-column: 1 / 7;
