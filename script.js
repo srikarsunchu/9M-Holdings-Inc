@@ -16,7 +16,6 @@ document.addEventListener("DOMContentLoaded", () => {
   initIntroAnimations();
   initSpotlightAnimations();
   initOutroAnimations();
-  initFormHandler();
   window.addEventListener("resize", initSpotlightAnimations);
 
   function initIntroAnimations() {

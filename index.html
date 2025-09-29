@@ -65,10 +65,10 @@
         
         <!-- Contact Form (Cols 8-12, Rows 2-6) -->
         <div class="grid-contact-form">
-          <form class="swiss-form">
-            <input type="text" placeholder="Name" class="form-field" required>
-            <input type="email" placeholder="Email" class="form-field" required>
-            <textarea placeholder="Message" class="form-field form-textarea" required></textarea>
+          <form class="swiss-form" action="https://formspree.io/f/mwprlrba" method="POST">
+            <input type="text" name="name" placeholder="Name" class="form-field" required>
+            <input type="email" name="email" placeholder="Email" class="form-field" required>
+            <textarea name="message" placeholder="Message" class="form-field form-textarea" required></textarea>
             <button type="submit" class="form-submit">Send</button>
           </form>
         </div>
