@@ -30,7 +30,8 @@ export default async function handler(req, res) {
 
     // Import Resend dynamically to avoid initialization issues
     const { Resend } = await import('resend');
-    const resend = new Resend(process.env.RESEND_API_KEY);
+    const apiKey = process.env.RESEND_API_KEY || 're_WvcK121C_23hM5Ydiq4dYCbLNDGXWkVY2';
+    const resend = new Resend(apiKey);
 
     // Check if API key is available
     console.log('Environment check - API key exists:', !!process.env.RESEND_API_KEY);
