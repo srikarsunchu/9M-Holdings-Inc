@@ -13,26 +13,32 @@
 
 body {
   font-family: "Instrument Serif", sans-serif;
+  font-size: clamp(1rem, 2.5vw, 1.125rem);
+  line-height: 1.6;
 }
 
 img {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  display: block;
+  /* Optimize for mobile performance */
+  image-rendering: -webkit-optimize-contrast;
+  image-rendering: crisp-edges;
 }
 
 h1 {
-  font-size: 5rem;
+  font-size: clamp(2.5rem, 8vw, 5rem);
   font-weight: 500;
-  letter-spacing: -0.1rem;
-  line-height: 0.9;
+  letter-spacing: clamp(-0.05rem, -0.2vw, -0.1rem);
+  line-height: clamp(0.85, 0.9, 0.95);
 }
 
 section {
   position: relative;
   width: 100vw;
   height: 100svh;
-  padding: 2rem;
+  padding: clamp(1rem, 4vw, 2rem);
   overflow: hidden;
 }
 
@@ -98,8 +104,8 @@ section {
 }
 
 .reg-mark-tl {
-  top: 2rem;
-  left: 2rem;
+  top: clamp(1rem, 4vw, 2rem);
+  left: clamp(1rem, 4vw, 2rem);
 }
 
 .reg-mark-tl::before {
@@ -113,8 +119,8 @@ section {
 }
 
 .reg-mark-tr {
-  top: 2rem;
-  right: 2rem;
+  top: clamp(1rem, 4vw, 2rem);
+  right: clamp(1rem, 4vw, 2rem);
 }
 
 .reg-mark-tr::before {
@@ -128,8 +134,8 @@ section {
 }
 
 .reg-mark-bl {
-  bottom: 2rem;
-  left: 2rem;
+  bottom: clamp(1rem, 4vw, 2rem);
+  left: clamp(1rem, 4vw, 2rem);
 }
 
 .reg-mark-bl::before {
@@ -143,8 +149,8 @@ section {
 }
 
 .reg-mark-br {
-  bottom: 2rem;
-  right: 2rem;
+  bottom: clamp(1rem, 4vw, 2rem);
+  right: clamp(1rem, 4vw, 2rem);
 }
 
 .reg-mark-br::before {
@@ -201,7 +207,7 @@ section {
 /* Metadata Elements */
 .metadata {
   position: absolute;
-  font-size: 0.75rem;
+  font-size: clamp(0.65rem, 1.5vw, 0.75rem);
   font-weight: 400;
   letter-spacing: 0.05em;
   opacity: 0;
@@ -211,23 +217,23 @@ section {
 }
 
 .metadata-tl {
-  top: 4rem;
-  left: 2rem;
+  top: clamp(2.5rem, 6vw, 4rem);
+  left: clamp(1rem, 4vw, 2rem);
 }
 
 .metadata-tr {
-  top: 4rem;
-  right: 2rem;
+  top: clamp(2.5rem, 6vw, 4rem);
+  right: clamp(1rem, 4vw, 2rem);
 }
 
 .metadata-bl {
-  bottom: 4rem;
-  left: 2rem;
+  bottom: clamp(2.5rem, 6vw, 4rem);
+  left: clamp(1rem, 4vw, 2rem);
 }
 
 .metadata-br {
-  bottom: 4rem;
-  right: 2rem;
+  bottom: clamp(2.5rem, 6vw, 4rem);
+  right: clamp(1rem, 4vw, 2rem);
 }
 
 /* Animation States */
@@ -270,8 +276,8 @@ section {
   top: 50%;
   left: 50%;
   transform: translate3d(-50%, -50%, -1000px);
-  width: 500px;
-  height: 350px;
+  width: clamp(250px, 60vw, 500px);
+  height: clamp(175px, 42vw, 350px);
   will-change: transform;
 }
 
@@ -405,12 +411,13 @@ section {
   background: transparent;
   border: none;
   border-bottom: 2px solid var(--dark);
-  padding: 1rem 0;
+  padding: clamp(0.75rem, 2vw, 1rem) 0;
   font-family: "Instrument Serif", sans-serif;
-  font-size: 1.2rem;
+  font-size: clamp(1rem, 3vw, 1.2rem);
   color: var(--dark);
   outline: none;
   transition: border-color 0.3s ease;
+  min-height: 44px;
 }
 
 .form-field:focus {
@@ -431,12 +438,14 @@ section {
   background: var(--dark);
   color: var(--light);
   border: none;
-  padding: 1rem 2rem;
+  padding: clamp(0.75rem, 2vw, 1rem) clamp(1.5rem, 4vw, 2rem);
   font-family: "Instrument Serif", sans-serif;
-  font-size: 1.1rem;
+  font-size: clamp(1rem, 2.5vw, 1.1rem);
   cursor: pointer;
   transition: all 0.3s ease;
   align-self: flex-start;
+  min-height: 44px;
+  min-width: 120px;
 }
 
 .form-submit:hover {
@@ -506,11 +515,13 @@ section {
   flex-direction: column;
   text-decoration: none;
   color: var(--dark);
-  padding: 1.5rem;
+  padding: clamp(1rem, 3vw, 1.5rem);
   border: 1px solid rgba(15, 15, 15, 0.2);
   transition: all 0.3s ease;
   position: relative;
   overflow: hidden;
+  min-height: 44px;
+  justify-content: center;
 }
 
 .contact-option:hover {
@@ -541,14 +552,14 @@ section {
 }
 
 .option-label {
-  font-size: 0.9rem;
+  font-size: clamp(0.8rem, 2vw, 0.9rem);
   opacity: 0.7;
   margin-bottom: 0.5rem;
   transition: color 0.3s ease;
 }
 
 .option-value {
-  font-size: 1.1rem;
+  font-size: clamp(1rem, 2.5vw, 1.1rem);
   font-weight: 500;
   transition: color 0.3s ease;
 }
@@ -594,6 +605,141 @@ section {
 .outro.revealed .grid-contact-options {
   opacity: 1;
   transform: translateY(0);
+}
+
+/* Mobile First Media Queries */
+@media (max-width: 480px) {
+  /* Small Mobile Devices */
+  .intro h1,
+  .outro h1 {
+    width: 95%;
+    font-size: clamp(2rem, 10vw, 2.5rem);
+  }
+  
+  .spotlight-intro-header h1,
+  .spotlight-outro-header h1 {
+    font-size: clamp(1.8rem, 8vw, 2.2rem);
+    width: 90%;
+    padding: 1rem;
+  }
+  
+  .swiss-grid-container {
+    gap: 1rem;
+    padding: 0.5rem;
+  }
+  
+  .grid-contact-options {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+  
+  .contact-option {
+    padding: 1rem;
+    min-height: 60px;
+  }
+  
+  .form-field {
+    font-size: 1rem;
+    padding: 1rem 0;
+  }
+  
+  .form-submit {
+    width: 100%;
+    padding: 1rem;
+    font-size: 1rem;
+  }
+  
+  /* Reduce animation complexity on small screens */
+  .img {
+    width: clamp(200px, 80vw, 300px);
+    height: clamp(140px, 56vw, 210px);
+  }
+  
+  .swiss-cross-container {
+    width: 80vw;
+    height: 80vh;
+  }
+}
+
+@media (min-width: 481px) and (max-width: 768px) {
+  /* Large Mobile / Small Tablet */
+  .intro h1,
+  .outro h1 {
+    width: 80%;
+  }
+  
+  .spotlight-intro-header,
+  .spotlight-outro-header {
+    width: 85%;
+    padding: 1.5rem;
+  }
+  
+  .swiss-grid-container {
+    gap: 1.5rem;
+  }
+  
+  .grid-contact-options {
+    grid-template-columns: 1fr 1fr;
+    gap: 1.25rem;
+  }
+  
+  .img {
+    width: clamp(300px, 65vw, 400px);
+    height: clamp(210px, 45vw, 280px);
+  }
+}
+
+@media (min-width: 769px) and (max-width: 1024px) {
+  /* Tablet */
+  .intro h1,
+  .outro h1 {
+    width: 70%;
+  }
+  
+  .spotlight-intro-header,
+  .spotlight-outro-header {
+    width: 75%;
+  }
+  
+  .swiss-grid-container {
+    grid-template-columns: repeat(8, 1fr);
+    grid-template-rows: repeat(6, 1fr);
+  }
+  
+  .grid-text-area {
+    grid-column: 1 / 6;
+    grid-row: 1 / 4;
+  }
+  
+  .grid-contact-form {
+    grid-column: 6 / 9;
+    grid-row: 1 / 5;
+  }
+  
+  .grid-contact-options {
+    grid-column: 1 / 5;
+    grid-row: 4 / 7;
+  }
+}
+
+/* Add support for reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+  
+  .img {
+    transform: translate3d(-50%, -50%, 0) !important;
+  }
+  
+  .spotlight-cover-img {
+    transform: none !important;
+  }
 }
 
 @media (max-width: 1000px) {

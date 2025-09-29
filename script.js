@@ -16,7 +16,18 @@ document.addEventListener("DOMContentLoaded", () => {
   initIntroAnimations();
   initSpotlightAnimations();
   initOutroAnimations();
-  window.addEventListener("resize", initSpotlightAnimations);
+  initFormHandler();
+  
+  // Debounced resize handler for better performance
+  let resizeTimeout;
+  const debouncedResize = () => {
+    clearTimeout(resizeTimeout);
+    resizeTimeout = setTimeout(() => {
+      initSpotlightAnimations();
+    }, 250);
+  };
+  
+  window.addEventListener("resize", debouncedResize);
 
   function initIntroAnimations() {
     const introSection = document.querySelector('.intro');
@@ -52,6 +63,10 @@ document.addEventListener("DOMContentLoaded", () => {
     const coverImg = document.querySelector(".spotlight-cover-img");
     const introHeader = document.querySelector(".spotlight-intro-header h1");
     const outroHeader = document.querySelector(".spotlight-outro-header h1");
+    
+    // Performance and accessibility checks
+    const isMobile = window.innerWidth < 768;
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
     let introHeaderSplit = null;
     let outroHeaderSplit = null;
@@ -88,8 +103,17 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const screenWidth = window.innerWidth;
     const screenHeight = window.innerHeight;
-    const isMobile = window.innerWidth < 1000;
-    const scatterMultiplier = isMobile ? 2.5 : 0.5;
+    const isLargeMobile = window.innerWidth < 1000;
+    const scatterMultiplier = isMobile ? 3.5 : isLargeMobile ? 2.5 : 0.5;
+    
+    // Skip complex animations if reduced motion is preferred
+    if (prefersReducedMotion) {
+      images.forEach((img, index) => {
+        gsap.set(img, { x: 0, y: 0, z: 0, scale: 1 });
+      });
+      gsap.set(coverImg, { x: 0, y: 0, z: 0, scale: 1 });
+      return;
+    }
 
     const startPositions = Array.from(images).map(() => ({
       x: 0,
@@ -128,7 +152,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
         images.forEach((img, index) => {
           const staggerDelay = index * 0.03;
-          const scaleMultiplier = isMobile ? 4 : 2;
+          const scaleMultiplier = isMobile ? 6 : isLargeMobile ? 4 : 2;
 
           let imageProgress = Math.max(0, (progress - staggerDelay) * 4);
 
